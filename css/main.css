@@ -27,7 +27,6 @@ section {
     justify-content: center;
     align-items: center; }
   section.fourth-bg {
-    margin-top: 60px;
     min-height: 335px;
     background: #f5f6f6;
     display: flex;
@@ -84,11 +83,25 @@ img {
 
 .primary-nav {
   padding-top: 9px; }
+  .primary-nav_btn {
+    display: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    position: absolute;
+    right: 15px;
+    top: -50px; }
   .primary-nav_menu {
     list-style: none;
-    display: flex; }
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto; }
     .primary-nav_menu li {
-      margin: 0 30px; }
+      margin: 0; }
       .primary-nav_menu li a {
         text-transform: uppercase;
         font-weight: bold;
@@ -96,7 +109,8 @@ img {
   .primary-nav_contacts {
     text-align: right; }
     .primary-nav_contacts .phone {
-      font-size: 24px;
+      display: inline-block;
+      font-size: 23px;
       font-weight: bold;
       margin: 0 0 15px 0; }
       .primary-nav_contacts .phone::before {
@@ -152,8 +166,14 @@ img {
     top: 50%;
     left: 55%; }
 
+.btn-media {
+  display: none; }
+
 .btn {
-  display: block;
+  display: block; }
+
+.btn,
+.btn-media {
   margin: 0 auto;
   width: 320px;
   box-sizing: border-box;
@@ -228,7 +248,9 @@ img {
 
 .popular-dishes {
   display: flex;
-  justify-content: space-between; }
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-bottom: 60px; }
   .popular-dishes .btn.order {
     width: 185px;
     font-size: 18px;
@@ -267,7 +289,9 @@ img {
     overflow: hidden;
     position: relative;
     background-repeat: no-repeat;
-    font-size: 18px; }
+    font-size: 18px;
+    margin-right: 20px;
+    margin-bottom: 20px; }
     .popular-dishes_item__price {
       display: flex;
       flex-direction: column;
@@ -324,9 +348,21 @@ img {
     color: #a1a1a1;
     background: #fff; }
 
-.full-menu input[type="checkbox"] {
-  margin: 0 5px 0 0;
-  vertical-align: middle; }
+.full-menu label {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #f9aa00;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative; }
+  .full-menu label:before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    z-index: 1000;
+    display: block; }
 
 .full-menu p {
   font-size: 14px;
@@ -342,6 +378,15 @@ img {
   border-bottom: 2px solid #c68700;
   padding: 12px 0;
   font-size: 24px; }
+
+#checkbox-politic {
+  display: none; }
+
+#checkbox-politic:checked ~ label:before {
+  width: 12px;
+  height: 12px;
+  background-image: url(../image/checked.png);
+  background-size: 100%; }
 
 .ordering-scheme_icons {
   display: flex;
@@ -377,7 +422,8 @@ img {
 .ordering-scheme .contact-text {
   font-size: 36px;
   color: #61c332;
-  font-weight: bold; }
+  font-weight: bold;
+  text-decoration: none; }
 
 .ordering-scheme .uppercase {
   text-transform: uppercase; }
@@ -433,3 +479,134 @@ footer {
       left: -5px; }
   footer .text-right {
     text-align: right; }
+
+.popup__overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.77);
+  margin: auto;
+  display: none;
+  z-index: 90; }
+
+.popup__controller {
+  max-width: 940px;
+  height: 340px;
+  background-image: url("../image/popup_controller_bg.png");
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-top: 45px;
+  display: none;
+  z-index: 100; }
+  .popup__controller .popup__controller-form {
+    display: flex;
+    justify-content: center; }
+    .popup__controller .popup__controller-form div {
+      max-width: 365px; }
+      .popup__controller .popup__controller-form div:first-child {
+        margin-right: 30px; }
+      .popup__controller .popup__controller-form div input[type="text"] {
+        border: 1px solid #f9aa00;
+        width: 360px;
+        height: 55px;
+        padding-left: 20px;
+        margin: 5px 0;
+        font-family: 'Roboto', sans-serif; }
+        .popup__controller .popup__controller-form div input[type="text"]::placeholder {
+          font-size: 16px;
+          font-style: italic;
+          color: #a1a1a1;
+          background: #fff; }
+      .popup__controller .popup__controller-form div input[type="checkbox"] {
+        margin: 0 5px 0 0;
+        vertical-align: middle; }
+      .popup__controller .popup__controller-form div p {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #484848; }
+        .popup__controller .popup__controller-form div p a {
+          color: #686868; }
+      .popup__controller .popup__controller-form div .btn {
+        width: 360px;
+        margin: 5px 0;
+        background: #f9aa00;
+        border-bottom: 2px solid #c68700;
+        padding: 12px 0;
+        font-size: 24px; }
+  .popup__controller .popup__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    top: -25px;
+    right: -30px;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-image: url("../image/close-icon.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #f9aa00;
+    cursor: pointer; }
+
+@media (max-width: 991px) {
+  .primary-nav_btn {
+    display: block;
+    color: #61c332;
+    outline: #61c332; }
+  .primary-nav_menu {
+    display: none;
+    flex-direction: column;
+    text-align: center; }
+    .primary-nav_menu li {
+      margin-bottom: 15px; }
+  .email {
+    display: none; }
+  .btn-media {
+    display: block;
+    width: 280px; }
+  .btn {
+    display: none; }
+  .primary-nav_contacts {
+    text-align: center; }
+  .timer-time {
+    margin-right: 30px; }
+    .timer-time_numbers {
+      font-size: 40px; }
+  .ordering-scheme p {
+    line-height: 1; }
+  .ordering-scheme .ordering-scheme_step:after {
+    top: 70px;
+    right: -40px;
+    width: 70px; }
+  .full-menu .btn {
+    display: block;
+    width: 300px; } }
+
+@media (max-width: 767px) {
+  .ordering-scheme .ordering-scheme_step:after {
+    display: none; }
+  .ordering-scheme_icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; } }
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 30px; }
+  .popular-dishes_item {
+    margin: 10px auto; }
+  .full-menu input[type="text"] {
+    width: 300px;
+    display: block;
+    margin: 10px auto; }
+  .ordering-scheme .contact-text {
+    font-size: 31px; } }
